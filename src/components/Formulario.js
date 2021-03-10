@@ -1,6 +1,9 @@
 // Import react
 import React , {Fragment , useState} from 'react';
 
+// Import UUID
+import uuid from 'uuid/v4';
+
 // Formulario component
 const Formulario = () =>{
 
@@ -42,7 +45,7 @@ const Formulario = () =>{
         updateError(false);
 
         // Assign appointment id
-
+        citas.id = uuid();
     }
 
     return(
