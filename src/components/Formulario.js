@@ -14,9 +14,15 @@ const Formulario = () =>{
     });
 
     // This function updates state when the user types in the form
-    const updateState = () =>{
-        console.log('escribiendo');
+    const updateState = e =>{
+        setCitas({
+            ...citas,
+            [e.target.name] : e.target.value
+        });
     }
+
+    // Extract values
+    const {mascota , propietario , date , time , sintomas } = citas;
 
     return(
         <Fragment>
@@ -30,6 +36,7 @@ const Formulario = () =>{
                     className='u-full-width'
                     placeholder='Nombre'
                     onChange={updateState}
+                    value= {mascota}
                 />
 
                 <label>Nombre propietario</label>
@@ -39,6 +46,7 @@ const Formulario = () =>{
                     className='u-full-width'
                     placeholder='Nombre propietario'
                     onChange={updateState}
+                    value= {propietario}
                 />
 
                 <label>Fecha</label>
@@ -48,6 +56,7 @@ const Formulario = () =>{
                     className='u-full-width'
                     placeholder=''
                     onChange={updateState}
+                    value= {date}
                 />
 
                 <label>Hora</label>
@@ -57,6 +66,7 @@ const Formulario = () =>{
                     className='u-full-width'
                     placeholder='time'
                     onChange={updateState}
+                    value= {time}
                 />
 
                 <label>Sintomas</label>
@@ -64,6 +74,7 @@ const Formulario = () =>{
                     className='u-full-width'
                     name='sintomas'
                     onChange={updateState}
+                    value={sintomas}
                 ></textarea>
 
                 <button
