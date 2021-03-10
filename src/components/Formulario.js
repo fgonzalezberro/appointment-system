@@ -37,6 +37,12 @@ const Formulario = () =>{
             updateError(true);
             return;
         }
+
+        // Clean error
+        updateError(false);
+
+        // Assign appointment id
+
     }
 
     return(
