@@ -13,6 +13,9 @@ const Formulario = () =>{
         sintomas: ''
     });
 
+    // Error state
+    const [error , updateError] = useState(false);
+
     // This function updates state when the user types in the form
     const updateState = e =>{
         setCitas({
@@ -24,11 +27,27 @@ const Formulario = () =>{
     // Extract values
     const {mascota , propietario , date , time , sintomas } = citas;
 
+    // When the user press 'Send form button' exectue this function
+    const submitCita = e =>{
+        e.preventDefault();
+
+        // Validate form inputs
+        if(mascota.trim() === '' || propietario.trim() === '' || date.trim() === '' || time.trim() === ''
+        || sintomas.trim() === ''){
+            updateError(true);
+            return;
+        }
+    }
+
     return(
         <Fragment>
             <h2>Crear cita</h2>
 
-            <form>
+            {error ? <p className='alerta-error'>Todos los campos son obligatorios.</p> : null}
+
+            <form
+                onSubmit = {submitCita}
+            >
                 <label>Nombre de mascota</label>
                 <input 
                     type='text'
