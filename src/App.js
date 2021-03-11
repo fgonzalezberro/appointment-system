@@ -22,6 +22,12 @@ function App() {
     ]);
   }
 
+  // Function to delete appointments for ID
+  const deleteAppointments = (id) =>{
+    const updateAppointments = appointments.filter(cita => cita.id !== id);
+    saveAppointments(updateAppointments);
+  }
+
   return (
     <Fragment>
       <h1>Administrador de pacientes</h1>
@@ -39,6 +45,7 @@ function App() {
               <Cita
                 cita={cita}
                 key={cita.id}
+                deleteAppointments={deleteAppointments}
               />
             ))}
           </div>
