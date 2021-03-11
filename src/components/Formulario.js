@@ -5,7 +5,7 @@ import React , {Fragment , useState} from 'react';
 import uuid from 'uuid/v4';
 
 // Formulario component
-const Formulario = () =>{
+const Formulario = ({setAppointments}) =>{
 
     // Appointment state
     const [citas , setCitas] = useState({
@@ -46,6 +46,10 @@ const Formulario = () =>{
 
         // Assign appointment id
         citas.id = uuid();
+
+        // Create cita
+        setAppointments(citas);
+
     }
 
     return(
