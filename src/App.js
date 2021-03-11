@@ -3,6 +3,7 @@ import React, {Fragment , useState} from 'react';
 
 // Import components
 import Formulario from './components/Formulario';
+import Cita from './components/Cita';
 
 // Import CSS 
 import './index.css';
@@ -23,7 +24,7 @@ function App() {
 
   return (
     <Fragment>
-      <h1>Administrador de citas</h1>
+      <h1>Administrador de pacientes</h1>
       <div className='container'>
         <div className='row'>
           <div className='one-half column'>
@@ -33,7 +34,13 @@ function App() {
           </div>
 
           <div className='one-half column'>
-            2
+            <h2>Administrador de citas</h2>
+            {appointments.map(cita => (
+              <Cita
+                cita={cita}
+                key={cita.id}
+              />
+            ))}
           </div>
         </div>
       </div>
