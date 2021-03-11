@@ -50,6 +50,15 @@ const Formulario = ({setAppointments}) =>{
         // Create cita
         setAppointments(citas);
 
+        // Restart form
+        setCitas({
+            mascota: '',
+            propietario: '',
+            date: '',
+            time: '',
+            sintomas: ''
+        });
+
     }
 
     return(
