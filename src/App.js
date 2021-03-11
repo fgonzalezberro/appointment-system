@@ -28,6 +28,8 @@ function App() {
     saveAppointments(updateAppointments);
   }
 
+  const titulo = appointments.length === 0 ? 'No tiene citas agendadas, agregue una cita' : 'Eliminar citas';
+
   return (
     <Fragment>
       <h1>Administrador de pacientes</h1>
@@ -40,7 +42,7 @@ function App() {
           </div>
 
           <div className='one-half column'>
-            <h2>Administrador de citas</h2>
+            <h2>{titulo}</h2>
             {appointments.map(cita => (
               <Cita
                 cita={cita}
