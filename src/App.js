@@ -1,5 +1,6 @@
 // Import React 
 import React, {Fragment , useState , useEffect} from 'react';
+import PropTypes from 'prop-types';
 
 // Import components
 import Formulario from './components/Formulario';
@@ -69,6 +70,11 @@ function App() {
     </Fragment>
 
   );
+}
+
+// Documenting Formulario component with Proptypes
+Formulario.propTypes = {
+  setAppointments : PropTypes.func.isRequired
 }
 
 export default App;
