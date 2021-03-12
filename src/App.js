@@ -1,5 +1,5 @@
 // Import React 
-import React, {Fragment , useState} from 'react';
+import React, {Fragment , useState , useEffect} from 'react';
 
 // Import components
 import Formulario from './components/Formulario';
@@ -11,8 +11,20 @@ import './index.css';
 
 function App() {
 
+  // Evalue if exist appointments in localStorage
+  let initialAppointments = JSON.parse(localStorage.getItem('citas'));
+  if(!initialAppointments){
+    initialAppointments = [];
+  }
+
   // State citas
-  const [appointments , saveAppointments] = useState([]);
+  const [appointments , saveAppointments] = useState(initialAppointments);
+
+  // Use effect to detect appointments change's
+  useEffect(() =>{
+    initialAppointments ? localStorage.setItem('citas' , JSON.stringify(appointments)) : localStorage.setItem('citas' , JSON.stringify([]));
+
+  } , [appointments]);
 
   // Function to save appointments
   const setAppointments = citas =>{
@@ -28,7 +40,8 @@ function App() {
     saveAppointments(updateAppointments);
   }
 
-  const titulo = appointments.length === 0 ? 'No tiene citas agendadas, agregue una cita' : 'Eliminar citas';
+  // Set title using ternary conditional
+  const titulo = appointments.length === 0 ? 'No tiene citas' : 'Administrar citas';
 
   return (
     <Fragment>
