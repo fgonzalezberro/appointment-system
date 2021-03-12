@@ -24,7 +24,7 @@ function App() {
   useEffect(() =>{
     initialAppointments ? localStorage.setItem('citas' , JSON.stringify(appointments)) : localStorage.setItem('citas' , JSON.stringify([]));
 
-  } , [appointments]);
+  } , [appointments , initialAppointments]);
 
   // Function to save appointments
   const setAppointments = citas =>{
